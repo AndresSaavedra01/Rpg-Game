@@ -1,8 +1,13 @@
 package game.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.io.File;
+import java.io.IOException;
 
 public class Window extends JFrame {
 
@@ -11,59 +16,42 @@ public class Window extends JFrame {
     private final int height =  720;
 
 
-    public Window(){
+    public Window() {
         super("Rpgero");
 
-        Toolkit pepe = Toolkit.getDefaultToolkit();
-        Dimension screenSize =  pepe.getScreenSize();
-        Image im = pepe.getImage("src/images/icons8-pepe-the-frog-48.png");
+        Toolkit tools = Toolkit.getDefaultToolkit();
+        Image icon = tools.getImage("src/images/icons8-pepe-the-frog-48.png");
+        Dimension d = tools.getScreenSize();
+        setIconImage(icon);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBounds(d.width / 2 - width / 2, d.height / 2 - height / 2, width, height);
+        setLayout(new BorderLayout(10,10));
+        add(new MainPanel(), BorderLayout.SOUTH);
 
-
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setBounds(screenSize.width/2 - width/2,
-                screenSize.height/2 - height/2,width, height);
-        this.setResizable(false);
-        this.setIconImage(im);
-        gui();
-        this.setVisible(true);
-
-    }
-
-    private void gui(){
-
-        JPanel mainPanel =  new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.darkGray);
-
-        JLabel ppe = new JLabel("PEPOSO");
-        JLabel p2 = new JLabel("puta");
-        mainPanel.setBorder(new BasicBorders.FieldBorder(Color.BLACK, Color.darkGray, Color.CYAN, Color.GREEN));
-        mainPanel.add(ppe);
-        mainPanel.add(p2);
-        mainPanel.setBackground(SystemColor.window);
-        this.add(mainPanel);
+        JPanel pepe = new JPanel(new BorderLayout( 10, 10));
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+        pepe.setBackground(Color.black);
+        p1.setBackground(Color.GRAY);
+        p1.add(new JButton("pepe"));
+        p2.add(new JButton("peposo"));
+        p2.setBackground(Color.GREEN);
+        pepe.add(p1, BorderLayout.EAST);
+        pepe.add(p2, BorderLayout.WEST);
+        add(new MainPanel(), BorderLayout.NORTH);
+        add(pepe, BorderLayout.CENTER);
+        setVisible(true);
 
     }
-
 
     class MainPanel extends JPanel{
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.setColor(Color.BLUE);
-            g.drawString("PEPOSO PEPERIDO", 400, 400);
-            g.drawArc(100, 100, 300, 600, 0, 90);
-            g.drawRect(300, 50, 200, 200);
-            g.drawOval(600, 400, 30,50);
-            g.fillOval(width/2, 400, 30,50);
-
-
-            for (int i = -100; i < 100; i++) {
-                int j = 0;
-                  j = (i-height/2)*(i-height/2);
-                  g.fillOval(i, j, 10,10);
-             }
+        public MainPanel(){
+            setLayout(new FlowLayout(FlowLayout.CENTER,100,20));
+            setBackground(Color.BLUE);
+            add(new JButton("otorinolaringologo"));
+            add(new JButton("PEPE"));
+            add(new JButton("PEPE"));
+            add(new JButton("PEPE"));
         }
     }
-
 }
