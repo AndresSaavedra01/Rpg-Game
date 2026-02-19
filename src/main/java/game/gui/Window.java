@@ -1,13 +1,9 @@
 package game.gui;
 
-import javax.imageio.ImageIO;
+import game.entities.Aspects;
+
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.io.File;
-import java.io.IOException;
 
 public class Window extends JFrame {
 
@@ -26,26 +22,16 @@ public class Window extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(d.width / 2 - width / 2, d.height / 2 - height / 2, width, height);
         setLayout(new BorderLayout(10,10));
-        add(new MainPanel(), BorderLayout.SOUTH);
+        add(new CharactersContainer(), BorderLayout.CENTER);
+        add(new SkillPanel(), BorderLayout.SOUTH);
 
-        JPanel pepe = new JPanel(new BorderLayout( 10, 10));
-        JPanel p1 = new JPanel();
-        JPanel p2 = new JPanel();
-        pepe.setBackground(Color.black);
-        p1.setBackground(Color.GRAY);
-        p1.add(new JButton("pepe"));
-        p2.add(new JButton("peposo"));
-        p2.setBackground(Color.GREEN);
-        pepe.add(p1, BorderLayout.EAST);
-        pepe.add(p2, BorderLayout.WEST);
-        add(new MainPanel(), BorderLayout.NORTH);
-        add(pepe, BorderLayout.CENTER);
+
         setVisible(true);
 
     }
 
-    class MainPanel extends JPanel{
-        public MainPanel(){
+    class SkillPanel extends JPanel{
+        public SkillPanel(){
             setLayout(new FlowLayout(FlowLayout.CENTER,100,20));
             setBackground(Color.BLUE);
             add(new JButton("otorinolaringologo"));
@@ -54,4 +40,43 @@ public class Window extends JFrame {
             add(new JButton("PEPE"));
         }
     }
+
+    class CharactersContainer extends JPanel{
+        public CharactersContainer() {
+            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+            setBackground(Color.PINK);
+            JPanel p = new JPanel();
+            JPanel p1 = new JPanel();
+            p.setBackground(Color.GREEN);
+            p1.setBackground(Color.GRAY);
+
+
+            add(new AspectCharacterPanel(Aspects.getImages().get(2)));
+            add(new AspectCharacterPanel(Aspects.getImages().get(3)));
+        }
+    }
+
+    class AspectCharacterPanel extends JPanel{
+        Image aspect;
+        static boolean pepe = true;
+        public AspectCharacterPanel(Image aspect) {
+            this.aspect =  aspect;
+            if (pepe)setBackground(Color.BLUE);
+            if (!pepe)setBackground(Color.GRAY);
+            pepe=!pepe;
+            scaledImage();
+
+        }
+
+        private void scaledImage(){
+            aspect = aspect.getScaledInstance(aspect.getWidth(this)*500,aspect.getWidth(this)*500,Image.SCALE_DEFAULT);
+        }
+
+        @Override
+        public void paint(Graphics g) {
+            super.paint(g);
+            g.drawImage(aspect, this.getWidth()/2-(aspect.getWidth(this)/2),this.getHeight()/2-(aspect.getHeight(this)/2), this);
+        }
+    }
+
 }

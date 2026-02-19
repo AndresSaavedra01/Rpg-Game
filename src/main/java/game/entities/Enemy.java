@@ -1,10 +1,13 @@
 package game.entities;
 
+import java.awt.*;
 import java.util.List;
 
 public class Enemy extends Character{
 
-    public Enemy(String name, List<Skill> skills, CharacterStats stats) {
+    private Image aspect;
+    public Enemy(String name, List<Skill> skills, CharacterStats stats, Image aspect) {
+        this.aspect = aspect;
         super(name, skills, stats);
     }
 
@@ -24,4 +27,11 @@ public class Enemy extends Character{
     }
 
 
+    public Image getAspect() {
+        return aspect;
+    }
+
+    public void setAspect(Image aspect) {
+        this.aspect = aspect;
+    }
 }
