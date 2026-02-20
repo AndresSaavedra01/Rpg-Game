@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Player extends Character {
 
+    Skill chooseSkill;
+
     public Player(String name, List<Skill> skills, CharacterStats stats) {
         super(name, skills, stats);
 
@@ -11,7 +13,7 @@ public class Player extends Character {
 
     @Override
     public Skill chooseSkill() {
-        return skills.getFirst();
+        return chooseSkill;
     }
 
     @Override
@@ -24,6 +26,10 @@ public class Player extends Character {
         return enemies.getFirst();
     }
 
+
+    public void setChooseSkill(Skill chooseSkill){
+        this.chooseSkill = chooseSkill;
+    }
 
 
 }

@@ -87,6 +87,10 @@ public abstract class Character implements Comparable {
 
     //GETTER AND SETTERS
 
+    public List<Skill> getSkills(){
+        return skills;
+    }
+
     public CharacterStats getStats() {return stats;}
 
     public void setStats(CharacterStats stats) {this.stats = stats;}

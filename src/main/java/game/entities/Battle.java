@@ -8,10 +8,9 @@ public class Battle {
 
     public Battle(BattleContext ctx) {
         this.ctx =  ctx;
-        loopBattle();
     }
 
-    private void loopBattle() {
+    public void loopBattle() {
         while (ctx.isFinish()){
             characterOnTurn = ctx.giveNextTurn();
             characterOnTurn.takeTurn(ctx);
@@ -19,4 +18,23 @@ public class Battle {
         }
 
     }
+
+    public boolean playerOnTur(){
+        return characterOnTurn instanceof Player;
+    }
+
+    public BattleContext getCtx() {
+        return ctx;
+    }
+
+
+    public Character getCharacterOnTurn() {
+        return characterOnTurn;
+    }
+
+    public void setCharacterOnTurn(Character characterOnTurn) {
+        this.characterOnTurn = characterOnTurn;
+    }
+
+
 }

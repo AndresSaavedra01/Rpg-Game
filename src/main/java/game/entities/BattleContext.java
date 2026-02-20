@@ -17,7 +17,6 @@ public class BattleContext {
 
 
     public void passAway() {
-
         for (int i = 0; i <enemies.size() ; i++){
             Character character = enemies.get(i);
             if (character.isAlieve()) {
@@ -46,7 +45,7 @@ public class BattleContext {
 
 
     public boolean isFinish () {
-        return !playerIsAlive() && enemies.isEmpty();
+        return !playerIsAlive() || enemies.isEmpty();
     }
 
 
@@ -56,5 +55,15 @@ public class BattleContext {
         }
         return turnManager.queuePoll();
     }
+
+    public Character getPlayer(){
+        for (Character character: allies){
+            if(character instanceof Player)
+                return character;
+        }
+        return null;
+    }
+
+
 
 }
