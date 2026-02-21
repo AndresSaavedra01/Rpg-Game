@@ -10,8 +10,10 @@ import java.util.List;
 public class Window extends JFrame {
 
     static List<Character> allies = createAllies();
+    static Character player;
     static BattleContext battleContext = new BattleContext(allies,createEnemies());
     static Battle battle = new Battle(battleContext);
+    static JPanel mainPanel = new JPanel();
 
     public Window() {
         super("Rpgero");
@@ -25,22 +27,29 @@ public class Window extends JFrame {
         setIconImage(icon);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(d.width / 2 - width / 2, d.height / 2 - height / 2, width, height);
-        setLayout(new BorderLayout(10,10));
-        add(new CharactersContainer(), BorderLayout.CENTER);
-        add(new SkillPanel(), BorderLayout.SOUTH);
-
+        add(mainPanel);
+        showSelector();
         setVisible(true);
-        battle.loopBattle();
+       // battle.loopBattle();
 
     }
 
-
-   static private Character createPlayer(){
-        return null;
+    public static void showSelector(){
+        mainPanel.removeAll();
+        mainPanel.add(new SelectorClassPlayer());
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
+
+    public static void showBattle(){
+        mainPanel.removeAll();
+        mainPanel.add(new BattlePanel());
+        mainPanel.revalidate();
+        mainPanel.repaint();
+    }
+
 
     static private List<Character> createAllies(){
-        Character player = createPlayer();
 
         return null;
     }
