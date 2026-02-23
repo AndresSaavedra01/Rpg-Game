@@ -75,7 +75,7 @@ public abstract class Character implements Comparable {
 
 
 
-
+//Usado para comparar la velocidad de de un Character a otro
     @Override
     public int compareTo(Object o) {
         Character character = (Character) o;

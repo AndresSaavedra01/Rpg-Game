@@ -13,7 +13,8 @@ public class Window extends JFrame {
     static Character player;
     static BattleContext battleContext = new BattleContext(allies,createEnemies());
     static Battle battle = new Battle(battleContext);
-    static JPanel mainPanel = new JPanel();
+    static CardLayout cardLayout =  new CardLayout();
+    static JPanel mainPanel = new JPanel(cardLayout);
 
     public Window() {
         super("Rpgero");
@@ -27,25 +28,23 @@ public class Window extends JFrame {
         setIconImage(icon);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(d.width / 2 - width / 2, d.height / 2 - height / 2, width, height);
+
+        mainPanel.add(new SelectorClassPlayer(), "SELECTOR");
+        mainPanel.add(new BattlePanel(), "BATTLE");
+
         add(mainPanel);
-        showSelector();
         setVisible(true);
        // battle.loopBattle();
 
     }
 
-    public static void showSelector(){
-        mainPanel.removeAll();
-        mainPanel.add(new SelectorClassPlayer());
-        mainPanel.revalidate();
-        mainPanel.repaint();
+    public static void showSelector() {
+        cardLayout.show(mainPanel, "SELECTOR");
     }
 
-    public static void showBattle(){
-        mainPanel.removeAll();
-        mainPanel.add(new BattlePanel());
-        mainPanel.revalidate();
-        mainPanel.repaint();
+    public static void showBattle() {
+        cardLayout.show(mainPanel, "BATTLE");
+        System.out.println(player.getName());
     }
 
 

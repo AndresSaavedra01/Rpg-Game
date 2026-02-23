@@ -3,6 +3,7 @@ package game.entities;
 import game.entities.effects.Effect;
 import game.types.TypeTarget;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Skill {
@@ -18,6 +19,16 @@ public class Skill {
         this.typeTarget = typeTarget;
 
     }
+
+    public Skill(String name, Cost cost, Effect effect, TypeTarget typeTarget) {
+        this.name = name;
+        this.cost = cost;
+        this.effects =  new ArrayList<>();
+        this.effects.add(effect);
+        this.typeTarget = typeTarget;
+
+    }
+
 
     public void cast(List<Character> targets){
         for (Effect effect: effects){

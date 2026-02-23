@@ -11,6 +11,8 @@ public class TurnManager {
         List<Character> aux =  new ArrayList<>(allies);
         aux.addAll(enemies);
 
+        //Internamente usa el comparateTo de la clase Character
+        //Y ordena de mayor a menor segun la velocidad de los Charaters
         Arrays.sort(turnQueue.toArray());
 
 //        while (!aux.isEmpty()){
