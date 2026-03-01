@@ -3,12 +3,15 @@
 - Una batalla tiene:
   - dos teams de participantes
   - un jugador
-  - Un turno actual
+  - Un manejador de turnos
 - Una battalla puede:
   - comenzar
   - finalizar
   - dar un turno
   - mirar si alguien murio
+
+- Un Manejador de turnos tiene:
+  - una cola ordenada
 
 - un participante tiene
   - vida
