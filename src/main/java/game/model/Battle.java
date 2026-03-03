@@ -10,18 +10,24 @@ public class Battle {
     public Battle(CharactersManager charactersManager) {
         this.charactersManager = charactersManager;
         turnManager =  new TurnManager(charactersManager.getAllCharacters());
+
+    }
+
+    public void startBattle(){
         isFinish = false;
         loopBattle();
     }
 
-
     private void loopBattle() {
         while (!isFinish){
             Character currentTurn =  turnManager.getNext();
-            currentTurn.takeTurn(charactersManager);
+            //currentTurn.takeTurn(charactersManager);
+            isFinish = checkFinish();
         }
     }
 
-
-
+    private boolean checkFinish(){
+        return charactersManager.areAlliesDead()||
+                charactersManager.areEnemiesDead();
+    }
 }

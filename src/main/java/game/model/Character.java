@@ -32,29 +32,11 @@ public class Character {
         return life.isZero();
     }
 
-    public void takeTurn(CharactersManager manager){
-        switch (selectAction()){
-            case 1 -> attack(chooseEnemy(manager));
-            case 2 -> guard();
-            case 3 -> healing(chooseAlly(manager));
-
-        }
-
-    }
-
     private void healing(Character target) {
-    }
-
-    private Character chooseAlly(CharactersManager manager) {
-        return null;
     }
 
     private void guard() {
 
-    }
-
-    private Character chooseEnemy(CharactersManager manager) {
-        return null;
     }
 
     private int selectAction() {
