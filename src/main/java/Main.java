@@ -1,4 +1,3 @@
-import game.controller.InputController;
 import game.view.Window;
 
 import javax.swing.*;
@@ -10,7 +9,6 @@ public class Main {
     public static void main() {
 
         Window w =  new Window();
-
 
     }
 
