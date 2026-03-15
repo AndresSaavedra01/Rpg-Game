@@ -1,5 +1,7 @@
 package game.view;
 
+import game.controller.InputController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -22,7 +24,8 @@ public class Window extends JFrame {
         setLayout(cardLayout);
         setBounds(widthPosition, heightPosition, width, height);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        InputController i = new InputController();
+        addKeyListener(i);
         add(new BattlePanel());
 
         setVisible(true);
