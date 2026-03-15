@@ -4,9 +4,9 @@ public class Stat {
     int max;
     int current;
 
-    public Stat(int max, int current) {
+    public Stat(int max) {
         this.max = max;
-        this.current = current;
+        this.current = max;
     }
 
     public void decrease(int value){

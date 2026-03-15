@@ -1,7 +1,5 @@
 package game.controller;
 
-import game.model.CharactersManager;
-
 public class EnemyIA implements CharacterController{
 
     @Override

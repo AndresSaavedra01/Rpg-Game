@@ -1,5 +1,6 @@
-package game.model;
+package game.controller;
 
+import game.model.Character;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,22 +10,22 @@ public class CharactersManager {
     private final List<Character> enemies;
     private final List<Character> allCharacters;
 
-    public CharactersManager(List<Character> allies, List<Character> enemies) {
+    public CharactersManager(List<Character> allies, List<game.model.Character> enemies) {
         this.allies = allies;
         this.enemies = enemies;
         allCharacters = new ArrayList<>(allies);
         allCharacters.addAll(enemies);
     }
 
-    public List<Character> getAllCharacters(){
+    public List<game.model.Character> getAllCharacters(){
         return allCharacters;
     }
 
-    public List<Character> getAllies() {
+    public List<game.model.Character> getAllies() {
         return allies;
     }
 
-    public List<Character> getEnemies() {
+    public List<game.model.Character> getEnemies() {
         return enemies;
     }
 
@@ -37,7 +38,7 @@ public class CharactersManager {
     }
 
 
-    private boolean areAllDead(List<Character> characters){
+    private boolean areAllDead(List<game.model.Character> characters){
         int cont = 0;
         for (Character character: characters){
             if (character.isDead())cont++;

@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 
 public class Window extends JFrame {
     Toolkit t =  Toolkit.getDefaultToolkit();
+    JPanel windowPanel = new JPanel();
     static final int width =  1080;
     static final int height = 720;
 
@@ -20,12 +21,21 @@ public class Window extends JFrame {
         int widthPosition = dimension.width / 2 -  width / 2 ;
         int heightPosition = dimension.height / 2 -  height / 2 ;
 
-        CardLayout cardLayout =  new CardLayout();
-        setLayout(cardLayout);
         setBounds(widthPosition, heightPosition, width, height);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         InputController i = new InputController();
+        CardLayout cardLayout =  new CardLayout();
+        StartPanel startPanel = new StartPanel(windowPanel, cardLayout);
+        BattlePanel battlePanel = new BattlePanel();
+
+
         addKeyListener(i);
+        windowPanel.setLayout(cardLayout);
+        windowPanel.add(startPanel, "start");
+        windowPanel.add(battlePanel, "battle");
+
+        cardLayout.show(windowPanel, "start");
         add(new BattlePanel());
 
         setVisible(true);

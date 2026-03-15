@@ -1,15 +1,18 @@
 package game.model;
 
+import java.awt.*;
+
 public class Character {
     private Stat life;
+    private Image aspect;
     private int attack;
     private int speed;
     private int armature;
     private int healing;
 
-
-    public Character(Stat life,int attack, int speed, int armature, int healing) {
+    public Character(Stat life, Image aspect, int attack, int speed, int armature, int healing) {
         this.life = life;
+        this.aspect = aspect;
         this.attack =  attack;
         this.speed = speed;
         this.armature = armature;
@@ -61,5 +64,9 @@ public class Character {
 
     public int getHealing() {
         return healing;
+    }
+
+    public Image getAspect() {
+        return aspect;
     }
 }

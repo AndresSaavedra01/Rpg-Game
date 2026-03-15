@@ -1,6 +1,7 @@
 package game.model;
 
 
+import game.controller.CharactersManager;
 
 public class Battle {
     CharactersManager charactersManager;

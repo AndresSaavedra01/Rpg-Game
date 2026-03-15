@@ -1,5 +1,8 @@
 package game.view;
 
+
+import game.model.Character;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,21 +12,21 @@ public class CharacterPanelContainer extends JPanel {
     private final List<CharacterPanel> characterPanels = new ArrayList<>();
     private int index = -1;
 
-    public CharacterPanelContainer() {
-        setBackground(Color.PINK);
+    public CharacterPanelContainer(List<Character> characters) {
+        setBackground(Color.DARK_GRAY);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 200));
-        characterPanels.add(new CharacterPanel());
-        characterPanels.add(new CharacterPanel());
-        characterPanels.add(new CharacterPanel());
-        characterPanels.add(new CharacterPanel());
+
+        for (Character character: characters){
+            characterPanels.add(new CharacterPanel(character));
+        }
         add(characterPanels.getFirst());
         add(characterPanels.get(1));
         add(characterPanels.get(2));
-        setBorder(Borders.classicBorder);
+        //setBorder(Borders.classicBorder);
     }
 
     public void moveIndexToRight(){
-        if(index + 1 < characterPanels.size() - 1){
+        if(index + 1 < characterPanels.size()){
             index++;
         }else {
             index = 0;

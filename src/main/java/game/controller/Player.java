@@ -1,8 +1,6 @@
 package game.controller;
 
 
-import game.model.CharactersManager;
-
 public class Player implements CharacterController{
 
     @Override
