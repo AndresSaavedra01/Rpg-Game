@@ -1,9 +1,4 @@
-import game.extra.Images;
 import game.view.Window;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.*;
 
 public class Main {
 
@@ -13,7 +8,6 @@ public class Main {
         Window w =  new Window();
 
     }
-
 
 
 }

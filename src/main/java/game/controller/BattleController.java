@@ -1,12 +1,10 @@
 package game.controller;
 
-import game.extra.Images;
+import resources.Images;
 import game.model.Battle;
 import game.model.Character;
 import game.model.Stat;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class BattleController {
