@@ -1,15 +1,23 @@
 package game.controller;
 
 
-public class Player implements CharacterController{
+import game.model.Character;
+
+public class Player extends CharacterController {
 
     @Override
-    public void takeTurn(CharactersManager manager) {
+    int chooseSkill() {
 
+        return 0;
     }
 
     @Override
-    public void chooseTarget(CharactersManager manager) {
+    Character chooseMyFella(Character caster, CharactersManager manager) {
+        return null;
+    }
 
+    @Override
+    Character chooseRival(Character caster, CharactersManager manager) {
+        return null;
     }
 }

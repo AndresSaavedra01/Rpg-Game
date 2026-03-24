@@ -19,11 +19,11 @@ public class Character {
         this.healing = healing;
     }
 
-    private void attack(Character target){
+    public void attack(Character target){
         target.takeDamage(this.attack);
     }
 
-    private void takeDamage(int attack) {
+    public void takeDamage(int attack) {
         this.life.decrease(resultDamage(attack));
     }
 
@@ -35,15 +35,11 @@ public class Character {
         return life.isZero();
     }
 
-    private void healing(Character target) {
+    public void healing(Character target) {
     }
 
-    private void guard() {
+    public void guard() {
 
-    }
-
-    private int selectAction() {
-        return 1;
     }
 
     public Stat getLife() {

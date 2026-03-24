@@ -10,22 +10,22 @@ public class CharactersManager {
     private final List<Character> enemies;
     private final List<Character> allCharacters;
 
-    public CharactersManager(List<Character> allies, List<game.model.Character> enemies) {
+    public CharactersManager(List<Character> allies, List<Character> enemies) {
         this.allies = allies;
         this.enemies = enemies;
         allCharacters = new ArrayList<>(allies);
         allCharacters.addAll(enemies);
     }
 
-    public List<game.model.Character> getAllCharacters(){
+    public List<Character> getAllCharacters(){
         return allCharacters;
     }
 
-    public List<game.model.Character> getAllies() {
+    public List<Character> getAllies() {
         return allies;
     }
 
-    public List<game.model.Character> getEnemies() {
+    public List<Character> getEnemies() {
         return enemies;
     }
 
@@ -38,7 +38,7 @@ public class CharactersManager {
     }
 
 
-    private boolean areAllDead(List<game.model.Character> characters){
+    private boolean areAllDead(List<Character> characters){
         int cont = 0;
         for (Character character: characters){
             if (character.isDead())cont++;

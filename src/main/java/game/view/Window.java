@@ -1,5 +1,6 @@
 package game.view;
 
+import game.controller.BattleController;
 import game.controller.InputController;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class Window extends JFrame {
     JPanel windowPanel = new JPanel();
     static final int width =  1080;
     static final int height = 720;
+    static BattleController battleController = new BattleController();
 
     public Window() {
         super("RPGero");
@@ -40,7 +42,7 @@ public class Window extends JFrame {
 
         setVisible(true);
 
-
+        battleController.getBattle().startBattle();
     }
 
 }

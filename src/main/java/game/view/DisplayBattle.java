@@ -7,17 +7,19 @@ import java.awt.*;
 
 public class DisplayBattle extends JPanel {
 
-    static private BattleController battleController =  new BattleController();
-    static private CharacterPanelContainer enemiesContainer =  new CharacterPanelContainer(battleController.getManager().getEnemies());
-    static private CharacterPanelContainer alliesContainer =  new CharacterPanelContainer(battleController.getManager().getAllies());
+    static private CharacterPanelContainer enemiesContainer;
+    static private CharacterPanelContainer alliesContainer;
 
     public DisplayBattle() {
+        enemiesContainer = new CharacterPanelContainer(Window.battleController.getManager().getEnemies());
+        alliesContainer = new CharacterPanelContainer(Window.battleController.getManager().getAllies());
         setBackground(Color.DARK_GRAY);
         setBorder(Borders.classicBorder);
 
         setLayout(new GridLayout(1,2,10,10));
         add(enemiesContainer);
         add(alliesContainer);
+
 
     }
 

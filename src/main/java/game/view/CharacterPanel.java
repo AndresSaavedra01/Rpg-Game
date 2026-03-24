@@ -8,12 +8,13 @@ import java.awt.*;
 
 public class CharacterPanel extends JPanel {
 
-    private Image image;
+    private Character character;
+
     public CharacterPanel(Character character) {
         setPreferredSize(new Dimension(150, 150));
         setBorder(Borders.classicBorder);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        image = character.getAspect();
+        this.character =  character;
         add(new AspectPanel(character instanceof Enemy));
         add(new StatsPanel());
 
@@ -31,6 +32,8 @@ public class CharacterPanel extends JPanel {
     class AspectPanel extends JPanel{
 
         private boolean isEnemy;
+        private Image image = character.getAspect();
+
         public AspectPanel(boolean isEnemy) {
             setPreferredSize(new Dimension(100,100));
             this.isEnemy =  isEnemy;
@@ -47,10 +50,18 @@ public class CharacterPanel extends JPanel {
 
     class StatsPanel extends JPanel{
 
+        private ProgressBar progressBar;
+
         public StatsPanel() {
-            ProgressBar p = new ProgressBar(20, Color.red);
-            p.decrease(5);
-            add(p);
+            progressBar = new ProgressBar(character.getLife().getMax(), Color.red);
+            JLabel attack = new JLabel("Attack: " + character.getAttack());
+            JLabel armature = new JLabel("Armature: " + character.getArmature());
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            add(progressBar);
+
         }
+
+
+
     }
 }

@@ -8,8 +8,9 @@ import java.util.List;
 
 public class BattleController {
 
-    CharactersManager manager;
-    Battle battle;
+    private CharactersManager manager;
+    private Battle battle;
+
     public BattleController() {
        manager =  new CharactersManager(createAllies(), createEnemies());
        battle = new Battle(manager);
