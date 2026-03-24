@@ -1,9 +1,8 @@
 package game.controller;
 
-import resources.Images;
-import game.model.Battle;
+import game.model.*;
 import game.model.Character;
-import game.model.Stat;
+import resources.Images;
 
 import java.util.List;
 
@@ -25,16 +24,16 @@ public class BattleController {
     }
 
     private List<Character> createAllies(){
-        Character c = new Character(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
-        Character v = new Character(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
-        Character r = new Character(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
+        Character c = new Ally(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
+        Character v = new Ally(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
+        Character r = new Ally(new Stat(32), Images.cut(Images.fileClerics, false), 32, 12, 4, 3);
         return List.of(c, v, r);
     }
 
     private List<Character> createEnemies(){
-        Character c = new Character(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
-        Character v = new Character(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
-        Character r = new Character(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
+        Character c = new Enemy(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
+        Character v = new Enemy(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
+        Character r = new Enemy(new Stat(32), Images.cut(Images.fileClerics, true), 32, 12, 4, 3);
         return List.of(c, v, r);
     }
 }

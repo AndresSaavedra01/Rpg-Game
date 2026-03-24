@@ -50,7 +50,6 @@ public class CharacterPanelContainer extends JPanel {
 
     private void selectCharacterPanel(int index){
         deselectAll();
-        System.out.println(index);
         characterPanels.get(index).changeToSelectionBorder();
     }
 
