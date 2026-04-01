@@ -2,26 +2,40 @@ package game.controller;
 
 import game.model.Character;
 
-import java.util.List;
 
 abstract class CharacterController {
 
-    public void takeTurn(Character caster, CharactersManager manager){
-        applySkill(chooseSkill(), caster, manager);
+    final CharactersManager manager;
+    public CharacterController(CharactersManager manager) {
+        this.manager = manager;
     }
 
-    private void applySkill(int skill, Character caster, CharactersManager manager){
+    public void takeTurn(Character caster){
+        applySkill(chooseSkill(), caster);
+    }
+
+    private void applySkill(int skill, Character caster){
+        System.out.println("aplicando skill");
+        System.out.println("skill value: " + skill);
         switch (skill){
-            case 1: caster.attack(chooseRival(caster, manager));
-            case 2: caster.guard();
-            case 3: caster.healing(chooseMyFella(caster, manager));
+            case 1 ->{
+                Character pepe =  chooseRival(caster);
+                caster.attack(pepe);
+                System.out.println("el men: " + caster.getName() + " ataco a " + pepe.getName());
+            }
+            case 2 ->{
+                caster.guard();
+            }
+            case 3 -> {
+                caster.healing(chooseMyFella(caster));
+            }
         }
     }
 
     abstract int chooseSkill();
 
-    abstract Character chooseMyFella(Character caster, CharactersManager manager);
+    abstract Character chooseMyFella(Character caster);
 
-    abstract Character chooseRival(Character caster, CharactersManager manager);
+    abstract Character chooseRival(Character caster);
 
 }

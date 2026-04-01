@@ -6,15 +6,17 @@ import game.controller.EnemyIA;
 import game.controller.Player;
 
 public class Battle {
-    CharactersManager charactersManager;
+    CharactersManager manager;
     TurnManager turnManager;
-    Player player;
+    Player player ;
     EnemyIA enemyIA;
     boolean isFinish;
 
-    public Battle(CharactersManager charactersManager) {
-        this.charactersManager = charactersManager;
-        turnManager =  new TurnManager(charactersManager.getAllCharacters());
+    public Battle(CharactersManager manager) {
+        this.manager = manager;
+        turnManager =  new TurnManager(manager.getAllCharacters());
+        player = new Player(manager);
+        enemyIA =  new EnemyIA(manager);
     }
 
     public void startBattle(){
@@ -26,15 +28,20 @@ public class Battle {
         while (!isFinish){
             Character currentTurn =  turnManager.getNext();
 
-            if(currentTurn instanceof Ally) player.takeTurn(currentTurn, charactersManager);
-            else enemyIA.takeTurn(currentTurn, charactersManager);
-
+            if(currentTurn instanceof Ally){
+                System.out.println("Player");
+                player.takeTurn(currentTurn);
+            }
+            else {
+                System.out.println("Enemy");
+                enemyIA.takeTurn(currentTurn);
+            }
             isFinish = checkFinish();
         }
     }
 
     private boolean checkFinish(){
-        return charactersManager.areAlliesDead()||
-                charactersManager.areEnemiesDead();
+        return manager.areAlliesDead()||
+                manager.areEnemiesDead();
     }
 }

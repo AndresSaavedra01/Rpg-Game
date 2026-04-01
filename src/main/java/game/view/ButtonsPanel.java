@@ -1,13 +1,15 @@
 package game.view;
 
+import game.controller.InputController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ButtonsPanel extends JPanel {
 
-    private JButton attack =  new JButton("Attack");
-    private JButton guard = new JButton("Guard");
-    private JButton healing =  new JButton("Heling");
+    private static JButton attack =  new JButton("Attack");
+    private static JButton guard = new JButton("Guard");
+    private static JButton healing =  new JButton("Heling");
 
     ButtonsPanel(){
         setPreferredSize(new Dimension(Window.width, 100));
@@ -20,15 +22,15 @@ public class ButtonsPanel extends JPanel {
         setBorder(Borders.classicBorder);
     }
 
-    public JButton getAttack() {
+    public static JButton getAttack() {
         return attack;
     }
 
-    public JButton getGuard() {
+    public static JButton getGuard() {
         return guard;
     }
 
-    public JButton getHealing() {
+    public static JButton getHealing() {
         return healing;
     }
 }

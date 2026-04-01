@@ -3,6 +3,7 @@ package game.model;
 import java.awt.*;
 
 public class Character {
+    private String name;
     private Stat life;
     private Image aspect;
     private int attack;
@@ -10,7 +11,8 @@ public class Character {
     private int armature;
     private int healing;
 
-    public Character(Stat life, Image aspect, int attack, int speed, int armature, int healing) {
+    public Character(String name, Stat life, Image aspect, int attack, int speed, int armature, int healing) {
+        this.name =  name;
         this.life = life;
         this.aspect = aspect;
         this.attack =  attack;
@@ -40,6 +42,14 @@ public class Character {
 
     public void guard() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Stat getLife() {

@@ -6,32 +6,40 @@ import java.util.Optional;
 import game.view.CharacterPanelContainer;
 import game.view.DisplayBattle;
 
-public class InputController extends KeyAdapter {
+public class InputController extends KeyAdapter{
 
-    private Optional<CharacterPanelContainer> containerFocus = Optional.empty();
-    private boolean change = false;
-
+    private static Optional<CharacterPanelContainer> containerFocus = Optional.empty();
+    private static Optional<Integer> currentIndex =  Optional.empty();
 
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
+        System.out.println(containerFocus.isPresent());
+        if(containerFocus.isPresent()){
+            if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                 containerFocus.get().moveIndexToRight();
+            }
 
-        if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            if (containerFocus.isPresent())containerFocus.get().resetIndex();
-
-            if(change) containerFocus = Optional.of(DisplayBattle.getAlliesContainer());
-            else containerFocus = Optional.of(DisplayBattle.getEnemiesContainer());
-            change = !change;
+            if(e.getKeyCode() == KeyEvent.VK_LEFT){
+               containerFocus.get().moveIndexToLeft();
+            }
+            if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                currentIndex = Optional.of(containerFocus.get().getIndex());
+            }
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            if(containerFocus.isPresent()) containerFocus.get().moveIndexToRight();
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_LEFT){
-           if(containerFocus.isPresent()) containerFocus.get().moveIndexToLeft();
-        }
     }
 
+    public static void setContainerFocus(CharacterPanelContainer containerFocus) {
+        InputController.containerFocus =  Optional.of(containerFocus);
+    }
+    public static void resetContainerFocus(){
+        InputController.containerFocus.ifPresent(CharacterPanelContainer::resetIndex);
+        InputController.currentIndex = Optional.empty();
+        InputController.containerFocus = Optional.empty();
+    }
 
+    public static Optional<Integer> getCurrentIndex() {
+        return currentIndex;
+    }
 }

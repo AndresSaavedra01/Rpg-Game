@@ -39,9 +39,7 @@ public class Window extends JFrame {
 
         cardLayout.show(windowPanel, "start");
         add(new BattlePanel());
-
         setVisible(true);
-
         battleController.getBattle().startBattle();
     }
 
