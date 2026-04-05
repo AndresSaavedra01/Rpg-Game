@@ -1,0 +1,36 @@
+package game.model.logic;
+
+import game.model.entities.Character;
+
+import java.util.Comparator;
+import java.util.List;
+
+public class CharacterManager {
+    private List<Character> characters;
+    private int currentIndex;
+
+
+    public CharacterManager(List<Character> characters) {
+        this.characters = characters.stream()
+                .sorted(Comparator.comparingInt(o -> o.getSpeed().getCurrent()))
+                .toList();
+        currentIndex = -1;
+    }
+
+
+    public Character getNext(){
+        currentIndex++;
+        if(currentIndex > characters.size())currentIndex = 0;
+        return characters.get(currentIndex);
+    }
+
+
+    public boolean alliesDefeat(){
+        return characters.stream().filter(Character::isAlly).noneMatch(Character::isAlive);
+    }
+
+    public boolean alliesWin(){
+        return characters.stream().filter(Character::isEnemy).noneMatch(Character::isAlive);
+    }
+
+}
