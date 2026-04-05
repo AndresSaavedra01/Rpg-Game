@@ -19,8 +19,8 @@ public class Battle {
         while (!characterManager.alliesWin() || !characterManager.alliesDefeat()){
             Character current = characterManager.getNext();
             if(current.isAlive()){
-                if (current.isEnemy())ia.takeTurn(current);
-                else player.takeTurn(current);
+                if (current.isEnemy())ia.takeTurn(current, characterManager);
+                else player.takeTurn(current, characterManager);
             }
         }
 

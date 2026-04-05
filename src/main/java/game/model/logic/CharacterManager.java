@@ -26,11 +26,19 @@ public class CharacterManager {
 
 
     public boolean alliesDefeat(){
-        return characters.stream().filter(Character::isAlly).noneMatch(Character::isAlive);
+        return getAllies().stream().noneMatch(Character::isAlive);
     }
 
     public boolean alliesWin(){
-        return characters.stream().filter(Character::isEnemy).noneMatch(Character::isAlive);
+        return getEnemies().stream().noneMatch(Character::isAlive);
+    }
+
+    public List<Character> getAllies(){
+        return characters.stream().filter(Character::isAlly).toList();
+    }
+
+    public List<Character> getEnemies(){
+        return characters.stream().filter(Character::isEnemy).toList();
     }
 
 }
