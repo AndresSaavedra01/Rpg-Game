@@ -18,4 +18,14 @@ public class Stats {
         this.healing = new Stat(healing);
     }
 
+    @Override
+    public String toString() {
+        return "Stats{" +
+                "life=" + life.getCurrent() +
+                ", attack=" + attack.getCurrent() +
+                ", speed=" + speed.getCurrent() +
+                ", armature=" + armature.getCurrent() +
+                ", healing=" + healing.getCurrent() +
+                '}';
+    }
 }

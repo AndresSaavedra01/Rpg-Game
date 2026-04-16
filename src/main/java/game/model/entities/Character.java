@@ -82,10 +82,14 @@ public class Character {
         return stats.armature;
     }
 
+    public Stats getStats(){
+        return stats;
+    }
 
     public Stat getHealing() {
         return stats.healing;
     }
+
 
 
 }

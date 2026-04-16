@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class IA extends BattleParticipant{
 
-    Random random =  new Random();
+    private Random random =  new Random();
 
     @Override
     int chooseSkill() {
@@ -15,11 +15,17 @@ public class IA extends BattleParticipant{
 
     @Override
     Character choosePartner(CharacterManager manager) {
-        return manager.getEnemies().get(random.nextInt(0, manager.getEnemies().size() + 1));
+        Character target =  manager.getEnemies().get(random.nextInt(0, manager.getEnemies().size()));
+
+        if(target.isAlive())return target;
+        return chooseRival(manager);
     }
 
     @Override
     Character chooseRival(CharacterManager manager) {
-        return manager.getAllies().get(random.nextInt(0, manager.getAllies().size() + 1));
+        Character target = manager.getAllies().get(random.nextInt(0, manager.getAllies().size()));
+
+        if(target.isAlive())return target;
+        return chooseRival(manager);
     }
 }

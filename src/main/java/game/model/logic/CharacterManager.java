@@ -20,8 +20,11 @@ public class CharacterManager {
 
     public Character getNext(){
         currentIndex++;
-        if(currentIndex > characters.size())currentIndex = 0;
-        return characters.get(currentIndex);
+        if(currentIndex >= characters.size())currentIndex = 0;
+        Character character =  characters.get(currentIndex);
+
+        if(character.isAlive()) return character;
+        else return getNext();
     }
 
 
