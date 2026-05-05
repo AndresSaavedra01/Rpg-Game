@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Battle {
     private CharacterManager characterManager;
+    private BattleState battleState;
     private Player player = new Player();
     private IA ia =  new IA();
     private Character current;

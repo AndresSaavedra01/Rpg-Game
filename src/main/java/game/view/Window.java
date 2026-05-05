@@ -13,11 +13,13 @@ import java.util.List;
 
 public class Window extends JFrame {
 
-    ButtonsPanel buttonsPanel =  new ButtonsPanel();
-    BattlePanel battlePanel =  new BattlePanel();
-    Battle battle = new Battle(init());
+
 
     public Window() {
+
+        Battle battle = new Battle(init());
+        ButtonsPanel buttonsPanel =  new ButtonsPanel();
+        BattlePanel battlePanel =  new BattlePanel(battle.getCharacterManager());
 
         setSize(1080, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,15 +31,19 @@ public class Window extends JFrame {
         add(battlePanel,BorderLayout.CENTER);
         buttonsPanel.getAttack().addActionListener(e -> {
            battle.playerTurn(1,selectTarget());
+           battlePanel.updateStats();
         });
         buttonsPanel.getGuard().addActionListener(e -> {
             battle.playerTurn(2, 0);
+            battlePanel.updateStats();
         });
         buttonsPanel.getHealing().addActionListener(e -> {
             battle.playerTurn(3,selectTarget());
+            battlePanel.updateStats();
         });
         battle.nextTurn();
     }
+
 
     private int selectTarget() {
         return Integer.parseInt(JOptionPane.showInputDialog(null, "ingresa un numero entre el 0 y el 2"));

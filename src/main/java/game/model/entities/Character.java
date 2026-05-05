@@ -1,6 +1,8 @@
 package game.model.entities;
 
 
+import game.view.BattleStatePanel;
+
 public class Character {
 
     private final String name;
@@ -34,14 +36,18 @@ public class Character {
 
     public void attack(Character target){
         target.takeDamage(getAttack().getCurrent());
-    }
-
-    public void healing(Character target){
-        target.takeHealing(getHealing().getCurrent());
+        BattleStatePanel.showDesition(this.name + " Attack to " + target.getName());
     }
 
     public void guard(){
         inGuard = true;
+        BattleStatePanel.showDesition(this.name + " Guard");
+    }
+
+
+    public void healing(Character target){
+        target.takeHealing(getHealing().getCurrent());
+        BattleStatePanel.showDesition(this.name + " Healing to " + target.getName());
     }
 
     public String getName() {

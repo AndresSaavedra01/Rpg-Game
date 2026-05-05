@@ -1,6 +1,7 @@
 package game.model.logic;
 
 import game.model.entities.Character;
+import game.view.BattleStatePanel;
 
 public class Player extends BattleParticipant{
 
